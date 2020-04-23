@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View nations</title>
+</head>
+<body>
+<h1>View nations: <span th:text="${nation.nationName}"></span></h1>
+<a href="/nations">nation list</a>
+<table border="1">
+    <tr>
+        <th>Thành phố ID</th>
+        <th>Tên thành phố</th>
+        <th>Quốc gia</th>
+        <th>Diện tích</th>
+        <th>Dân số</th>
+        <th>GDP</th>
+        <th>Giới thiệu</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="city : ${cities}">
+        <tr>
+            <td th:text="${city.cityID}"></td>
+            <td th:text="${city.cityName}"></td>
+            <td th:text="${city.nation}"></td>
+            <td th:text="${city.area}"></td>
+            <td th:text="${city.population}"></td>
+            <td th:text="${city.GDP}"></td>
+            <td th:text="${city.description}"></td>
+            <td><a th:href="@{/edit-city/__${city.cityID}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-city/__${city.cityID}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
